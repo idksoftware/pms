@@ -1,0 +1,117 @@
+'''
+Created on Feb 27, 2014
+
+@author: wzw7yn
+'''
+class DBAttribDef:
+    
+    def __init__(self, lable, valueType, default=None, maxValue=None, minValue=None, pkey=False ):
+
+        self.lable= lable
+        self.valueType = valueType
+        self.max = maxValue
+        self.min = minValue
+        self.default = default
+        self.pkey = pkey
+    
+    '''
+    def __init__(self, lable, valueType):
+
+        self.lable= lable
+        self.valueType = valueType
+        self.max = None
+        self.min = None
+        self.default = None
+        self.pkey = None
+    '''
+    def GetLable(self):
+        return self.lable
+    
+    def GetDefault(self):
+        return self.default
+
+class Attrib:
+
+
+    def __init__(self, dbAttribDef, text):
+        self.dbAttribDef = dbAttribDef
+        self.text = text
+        self.ctrl = None
+
+    def SetCtrl(self, ctrl):
+        self.ctrl = ctrl
+
+    def IsChanged(self):
+        if self.ctrl == None:
+            return False
+        if self.text != self.ctrl.GetValue():
+            return True
+        return False
+
+    def GetText(self):
+        if self.ctrl != None:
+            return self.ctrl.GetValue()
+        if self.text == None:
+            if self.dbAttribDef.GetDefault() == None:
+                return ""
+            else:
+                return self.dbAttribDef.GetDefault()
+            
+        return self.text
+
+    def GetDef(self):
+        return self.dbAttribDef
+
+
+class DBTableDef:
+
+    def __init__(self):
+        self.list = list()
+
+    def Add(self, lable, valueType, default=None, maxValue=None, minValue=None, pkey=False ):
+        attr = DBAttribDef(lable, valueType, default, max, min, pkey)
+        self.list.append(attr)
+
+    def GetAttribs(self):
+        return self.list
+
+
+class DBRow:
+
+    def __init__(self, attrList):
+        self.attrList = attrList
+
+    def GetAttr(self, lable):
+        for attr in self.attrList:
+            lstr = attr.GetDef().GetLable()
+            if lstr == lable:
+                return attr
+
+class DBTable:
+    def __init__(self, dbTableItemDef):
+        self.dbTableItemDef = dbTableItemDef
+
+
+
+    def GetRow(self, row):
+        deflist = self.dbTableItemDef.GetAttribs()
+        attrlist = list()
+        i = 0;
+        for item in deflist:
+            attrlist.append(Attrib(item,row[i]))
+            i = i + 1
+        arow = DBRow(attrlist)
+        return arow
+
+    def Set(self, idx, text, ctrl):
+        self.row[idx].text = text
+        self.row[idx].ctrl = ctrl
+
+    def updateList(self):
+        self.changeList = {}
+        i = 0
+        for item in self.row:
+            if item.IsChanged():
+                self.changeList[i] = item.GetText()
+            i = i + 1
+        return self.changeList
