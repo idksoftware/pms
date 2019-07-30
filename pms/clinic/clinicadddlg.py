@@ -132,10 +132,10 @@ class ClinicAddPanel(wx.Panel):
         mainSizer.Add(wx.StaticLine(self), 0, wx.EXPAND | wx.TOP | wx.BOTTOM, 5)
         self.SetSizer(mainSizer)
         
-        #self.Bind(wx.EVT_BUTTON, self.OnEdit, editbtn)
+        self.Bind(wx.EVT_BUTTON, self.OnEdit, editbtn)
         #self.Bind(wx.EVT_LIST_ITEM_SELECTED, self.OnItemSelected)
         #self.Bind(wx.EVT_LIST_ITEM_ACTIVATED, self.OnClicked)
-    '''
+    
     def OnEdit(self, event):
         page = self.appointmentDetailsCtrl.GetSelection()
         if page == 0:
@@ -150,7 +150,7 @@ class ClinicAddPanel(wx.Panel):
         elif page == 3: 
             print "History page"
         print "Edit button"
-     '''
+     
         
 class TestApp(wx.App):
     def OnInit(self):

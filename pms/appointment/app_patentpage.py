@@ -5,8 +5,8 @@ Created on Jan 8, 2014
 '''
 import wx
 
-from wx.wizard import PyWizardPage
-
+from wx.adv import PyWizardPage
+from wx.adv import Wizard
 
 
 class App_PatentPage(PyWizardPage):
@@ -17,7 +17,7 @@ class App_PatentPage(PyWizardPage):
         self.next = self
         self.__DoLayout()
         self.SetInitialSize()
-        #self.Bind(wx.wizard.EVT_WIZARD_PAGE_CHANGED, self.OnPageChanged)
+        self.Bind(Wizard.EVT_WIZARD_PAGE_CHANGED, self.OnPageChanged)
 
     def SetPrev(self, prev):
         self.prev = prev

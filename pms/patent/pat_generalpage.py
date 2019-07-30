@@ -4,8 +4,8 @@ Created on Jan 8, 2014
 @author: wzw7yn
 '''
 import wx
-
-from wx.wizard import PyWizardPage
+from wx.adv import Wizard
+from wx.adv import PyWizardPage
 
 
 
@@ -17,7 +17,7 @@ class GeneralPage(PyWizardPage):
         self.next = self
         self.__DoLayout()
         self.SetInitialSize()
-        #self.Bind(wx.wizard.EVT_WIZARD_PAGE_CHANGED, self.OnPageChanged)
+        self.Bind(Wizard.EVT_WIZARD_PAGE_CHANGED, self.OnPageChanged)
 
     def SetPrev(self, prev):
         self.prev = prev

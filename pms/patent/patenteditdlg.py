@@ -5,7 +5,8 @@ Created on Jan 8, 2014
 '''
 import wx
 import wx.lib.scrolledpanel as scrolledpanel
-from wx.calendar import CalendarCtrl
+from wx.adv import DatePickerCtrl
+#import  wx.calendar
 
 
 class GeneralCtrl(scrolledpanel.ScrolledPanel):
@@ -67,7 +68,7 @@ class GeneralCtrl(scrolledpanel.ScrolledPanel):
         self.niNumber = wx.TextCtrl(self, -1, text, size=(100, 23))
         
         dateOfBirthLbl = wx.StaticText(self, -1, "Date of Birth:")
-        self.dateOfBirth = wx.DatePickerCtrl(self, -1, wx.DateTime.Today())
+        self.dateOfBirth = DatePickerCtrl(self, -1, wx.DateTime.Today())
         
         gpLbl = wx.StaticText(self, -1, "General Practioner:")
         testList = [ 'None', 'Dr Smith', 'Dr Johnson', 'Dr King' ]
@@ -291,7 +292,7 @@ class OtherCtrl(scrolledpanel.ScrolledPanel):
 
         startdateLbl = wx.StaticText(self, -1, "Start date:")
         #self.startdate = CalendarCtrl(self, -1, wx.DateTime.Today(), style=)
-        self.startdate = wx.DatePickerCtrl(self, -1, wx.DateTime.Today())
+        self.startdate = DatePickerCtrl(self, -1, wx.DateTime.Today())
 
         insuranceInformationLbl = wx.StaticText(self, -1, "Insurance Information:")
         self.insuranceInformation = wx.TextCtrl(self, style=wx.TE_MULTILINE, size=(200,100))

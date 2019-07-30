@@ -8,7 +8,7 @@ import os
 
 from datetime import datetime
 from datetime import timedelta
-import calendar
+from wx.adv import CalendarCtrl
 
 from appointmentdlg import AppointmentDialog
 

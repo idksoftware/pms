@@ -4,8 +4,10 @@ Created on Jan 8, 2014
 @author: wzw7yn
 '''
 import wx
-import wx.wizard
-from wx.wizard import PyWizardPage
+
+from wx.adv import PyWizardPage
+from wx.adv import Wizard
+from wx.adv import wx
 from newinfo import GPInfo
 
     
@@ -18,7 +20,7 @@ class GP_GeneralPage(PyWizardPage):
         self.next = self
         self.__DoLayout()
         self.SetInitialSize()
-        self.Bind(wx.wizard.EVT_WIZARD_PAGE_CHANGED, self.OnPageChanged)
+        self.Bind(Wizard.EVT_WIZARD_PAGE_CHANGED, self.OnPageChanged)
         self.gpInfo = GPInfo
 
     def SetPrev(self, prev):

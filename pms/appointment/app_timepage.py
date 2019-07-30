@@ -4,8 +4,9 @@ Created on Jan 8, 2014
 @author: wzw7yn
 '''
 import wx
-import wx.wizard
-from wx.wizard import PyWizardPage
+
+from wx.adv import PyWizardPage
+from wx.adv import Wizard
 
 
 
@@ -17,7 +18,7 @@ class App_TimePage(PyWizardPage):
         self.next = self
         self.__DoLayout()
         self.SetInitialSize()
-        self.Bind(wx.wizard.EVT_WIZARD_PAGE_CHANGED, self.OnPageChanged)
+        self.Bind(Wizard.EVT_WIZARD_PAGE_CHANGED, self.OnPageChanged)
         self.Done = False
 
     def SetPrev(self, prev):

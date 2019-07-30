@@ -4,8 +4,10 @@ Created on Jan 8, 2014
 @author: wzw7yn
 '''
 import wx
-import wx.wizard
-from wx.wizard import PyWizardPage
+
+from wx.adv import PyWizardPage
+from wx.adv import Wizard
+from wx.adv import DatePickerCtrl
 from utils.editoptionsdlg import OptionsDialog
 from utils.editoptionsdlg import OptionReader
 
@@ -41,7 +43,7 @@ class CPD_GeneralPage(PyWizardPage):
         self.next = self
         self.__DoLayout()
         self.SetInitialSize()
-        self.Bind(wx.wizard.EVT_WIZARD_PAGE_CHANGED, self.OnPageChanged)
+        self.Bind(Wizard.EVT_WIZARD_PAGE_CHANGED, self.OnPageChanged)
         #self.gpInfo = GPInfo
 
     def SetPrev(self, prev):
@@ -106,7 +108,7 @@ class CPD_GeneralPage(PyWizardPage):
         self.title = wx.TextCtrl(self, -1, text, size=(200, 23))
 
         dateLbl = wx.StaticText(self, -1, "Date:")
-        self.date_started = wx.DatePickerCtrl(self, -1, wx.DateTime.Today())
+        self.date_started = DatePickerCtrl(self, -1, wx.DateTime.Today())
 
         noOfDaysLbl = wx.StaticText(self, -1, "Number of days taken:")
         self.days_taken = wx.SpinCtrl(self, -1, text, size=(40,25), min=0, max=23, initial=9)

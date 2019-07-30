@@ -5,8 +5,9 @@ Created on Jan 8, 2014
 '''
 import wx
 
-from wx.wizard import PyWizardPage
-import wx.wizard
+from wx.adv import PyWizardPage
+from wx.adv import Wizard
+
 #from newinfo import GPInfo
 
 
@@ -18,7 +19,7 @@ class Eqp_OtherPage(PyWizardPage):
         self.next = self
         self.__DoLayout()
         self.SetInitialSize()
-        self.Bind(wx.wizard.EVT_WIZARD_PAGE_CHANGED, self.OnPageChanged)
+        self.Bind(Wizard.EVT_WIZARD_PAGE_CHANGED, self.OnPageChanged)
         self.gpInfo = gpInfo
         self.Done = False;
 

@@ -8,7 +8,7 @@ import os
 
 from datetime import datetime
 from datetime import timedelta
-import calendar
+#import calendar
 
 from patenteditdlg import PatentEditDialog
 

@@ -5,7 +5,7 @@ Created on Jan 8, 2014
 '''
 import wx
 import wx.lib.scrolledpanel as scrolledpanel
-from wx.calendar import CalendarCtrl
+from wx.adv import CalendarCtrl
 from cpdlists import FilesListCtrl
 from cpdlists import WebLinksCtrl
 from cpdlists import HistoryListCtrl

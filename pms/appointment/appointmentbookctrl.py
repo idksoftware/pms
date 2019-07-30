@@ -7,7 +7,7 @@ import wx
 import aputils
 from datetime import datetime
 from datetime import timedelta
-
+from patent.patenteditdlg import PatentEditDialog
 from access.ap_pat_joined import AppointmentPatentTable
 
 
@@ -187,8 +187,8 @@ class AppointmentListCtrl(wx.ListCtrl):
         self.SetColumnWidth(1, 50)
         self.SetColumnWidth(1, 100)
         self.SetColumnWidth(2, wx.LIST_AUTOSIZE_USEHEADER)
-        #self.Bind(wx.EVT_LIST_ITEM_SELECTED, self.OnItemSelected)
-        #self.Bind(wx.EVT_LIST_ITEM_ACTIVATED, self.OnClicked)
+        self.Bind(wx.EVT_LIST_ITEM_SELECTED, self.OnItemSelected)
+        self.Bind(wx.EVT_LIST_ITEM_ACTIVATED, self.OnClicked)
 
     def populateList(self, data):
         self.DeleteAllItems()
@@ -197,7 +197,7 @@ class AppointmentListCtrl(wx.ListCtrl):
             self.Append(list)
 
 
-    '''
+    
     def OnClicked(self, event):
         self.selected_row = event.GetIndex()
         self.rows[self.selected_row]
@@ -212,4 +212,4 @@ class AppointmentListCtrl(wx.ListCtrl):
             val.append(item.GetText())
         frame = self.GetTopLevelParent()
         frame.PushStatusText(" ".join(val))
-     '''
+     

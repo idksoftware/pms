@@ -6,7 +6,10 @@ Created on Jan 8, 2014
 import wx
 import os
 import wx.lib.scrolledpanel as scrolledpanel
-from wx.calendar import CalendarCtrl
+from wx.adv import DatePickerCtrl
+from wx import FileDialog
+
+
 from access.cpd import CPDTable
 from cpdlists import FilesListCtrl
 from utils.copyattachments import Attachments
@@ -58,7 +61,7 @@ class GeneralCtrl(scrolledpanel.ScrolledPanel):
         date = wx.DateTime()
         date_started = dbRow.GetAttr('date_started')
         date.ParseDate(date_started.GetText())
-        date_started.SetCtrl(wx.DatePickerCtrl(self, -1, date))
+        date_started.SetCtrl(DatePickerCtrl(self, -1, date))
 
         days_taken = dbRow.GetAttr('days_taken')
         noOfDaysLbl = wx.StaticText(self, -1, "Number of days taken:")
@@ -242,7 +245,7 @@ class OtherCtrl(scrolledpanel.ScrolledPanel):
         wildcard = "All Files (*.*) | *.* |" \
                    "source (*.py) | *.py |" \
                    "Doc Files (*.doc) | *.doc"
-        dialog = wx.FileDialog(self, "Attach files", os.getcwd(), "", "*.*", wx.OPEN | wx.MULTIPLE)
+        dialog = FileDialog(self, "Attach files", os.getcwd(), "", "*.*", FileDialog.OPEN | FileDialog.MULTIPLE)
         if dialog.ShowModal() == wx.ID_OK:
             
             fullList = dialog.GetPaths()

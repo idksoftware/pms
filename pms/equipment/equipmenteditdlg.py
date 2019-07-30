@@ -5,8 +5,8 @@ Created on Jan 8, 2014
 '''
 import wx
 import wx.lib.scrolledpanel as scrolledpanel
-from wx.calendar import CalendarCtrl
-
+from wx.adv import CalendarCtrl
+from wx.adv import DatePickerCtrl
 
 class GeneralCtrl(scrolledpanel.ScrolledPanel):
 
@@ -39,17 +39,17 @@ class GeneralCtrl(scrolledpanel.ScrolledPanel):
         self.serialNo = wx.TextCtrl(self, -1, text, size=(200, 23))
         
         purchasedLbl = wx.StaticText(self, -1, "Purchased:")
-        self.purchased = wx.DatePickerCtrl(self, -1, wx.DateTime.Today())
+        self.purchased = DatePickerCtrl(self, -1, wx.DateTime.Today())
 
         
         costLbl = wx.StaticText(self, -1, "Cost:")
         self.cost = wx.TextCtrl(self, -1, text, size=(30, 23))
 
         nextServiceLbl = wx.StaticText(self, -1, "Next Service:")
-        self.nextService = wx.DatePickerCtrl(self, -1, wx.DateTime.Today())
+        self.nextService = DatePickerCtrl(self, -1, wx.DateTime.Today())
 
         lastServiceLbl = wx.StaticText(self, -1, "Last Service:")
-        self.lastService = wx.DatePickerCtrl(self, -1, wx.DateTime.Today())
+        self.lastService = DatePickerCtrl(self, -1, wx.DateTime.Today())
         
         intervalList = [ '3 Months', '6 Months', 'Year', '2 Years', '5 years' ]
         serviceIntervalLbl = wx.StaticText(self, -1, "Service Interval:")

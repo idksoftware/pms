@@ -4,8 +4,10 @@ Created on Jan 8, 2014
 @author: wzw7yn
 '''
 import wx
-import wx.wizard
-from wx.wizard import PyWizardPage
+
+from wx.adv import PyWizardPage
+from wx.adv import Wizard
+from wx.adv import DatePickerCtrl
 from equipment.serviceproviderdlg import ServiceProviderDialog
 
 class Eqp_GeneralPage(PyWizardPage):
@@ -17,7 +19,7 @@ class Eqp_GeneralPage(PyWizardPage):
         self.next = self
         self.__DoLayout()
         self.SetInitialSize()
-        self.Bind(wx.wizard.EVT_WIZARD_PAGE_CHANGED, self.OnPageChanged)
+        self.Bind(Wizard.EVT_WIZARD_PAGE_CHANGED, self.OnPageChanged)
         #self.gpInfo = GPInfo
 
     def SetPrev(self, prev):
@@ -56,17 +58,17 @@ class Eqp_GeneralPage(PyWizardPage):
         self.serialNo = wx.TextCtrl(self, -1, text, size=(200, 23))
         
         purchasedLbl = wx.StaticText(self, -1, "Purchased:")
-        self.purchased = wx.DatePickerCtrl(self, -1, wx.DateTime.Today())
+        self.purchased = DatePickerCtrl(self, -1, wx.DateTime.Today())
 
         
         costLbl = wx.StaticText(self, -1, "Cost:")
         self.cost = wx.TextCtrl(self, -1, text, size=(30, 23))
 
         nextServiceLbl = wx.StaticText(self, -1, "Next Service:")
-        self.nextService = wx.DatePickerCtrl(self, -1, wx.DateTime.Today())
+        self.nextService = DatePickerCtrl(self, -1, wx.DateTime.Today())
 
         lastServiceLbl = wx.StaticText(self, -1, "Last Service:")
-        self.lastService = wx.DatePickerCtrl(self, -1, wx.DateTime.Today())
+        self.lastService = DatePickerCtrl(self, -1, wx.DateTime.Today())
         
         intervalList = [ '3 Months', '6 Months', 'Year', '2 Years', '5 years' ]
         serviceIntervalLbl = wx.StaticText(self, -1, "Service Interval:")

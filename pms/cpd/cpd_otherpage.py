@@ -6,8 +6,9 @@ Created on Jan 8, 2014
 import wx
 import os
 
-from wx.wizard import PyWizardPage
-import wx.wizard
+from wx.adv import PyWizardPage
+from wx.adv import Wizard
+from wx import FileDialog
 from cpdlists import FilesListCtrl
 from cpdlists import WebLinksCtrl
 from utils.copyattachments import Attachments
@@ -20,7 +21,7 @@ class CPD_OtherPage(PyWizardPage):
         self.next = self
         self.__DoLayout()
         self.SetInitialSize()
-        self.Bind(wx.wizard.EVT_WIZARD_PAGE_CHANGED, self.OnPageChanged)
+        self.Bind(Wizard.EVT_WIZARD_PAGE_CHANGED, self.OnPageChanged)
         self.gpInfo = gpInfo
         self.Done = False;
 
@@ -111,7 +112,7 @@ class CPD_OtherPage(PyWizardPage):
         wildcard = "All Files (*.*) | *.* |" \
                    "source (*.py) | *.py |" \
                    "Doc Files (*.doc) | *.doc"
-        dialog = wx.FileDialog(self, "Attach files", os.getcwd(), "", "*.*", wx.OPEN | wx.MULTIPLE)
+        dialog = FileDialog(self, "Attach files", os.getcwd(), "", "*.*", FileDialog.OPEN | FileDialog.MULTIPLE)
         if dialog.ShowModal() == wx.ID_OK:
             
             fullList = dialog.GetPaths()
