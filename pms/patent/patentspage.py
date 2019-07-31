@@ -253,8 +253,8 @@ class PatentListCtrl(wx.ListCtrl):
         self.SetColumnWidth(1, 50)
         self.SetColumnWidth(1, 100)
         self.SetColumnWidth(2, wx.LIST_AUTOSIZE_USEHEADER)
-        #self.Bind(wx.EVT_LIST_ITEM_SELECTED, self.OnItemSelected)
-        #self.Bind(wx.EVT_LIST_ITEM_ACTIVATED, self.OnClicked)
+        self.Bind(wx.EVT_LIST_ITEM_SELECTED, self.OnItemSelected)
+        self.Bind(wx.EVT_LIST_ITEM_ACTIVATED, self.OnClicked)
 
     def populateList(self, data):
         self.DeleteAllItems()
@@ -262,7 +262,7 @@ class PatentListCtrl(wx.ListCtrl):
             list = row[1], row[2], row[3], row[4]
             self.Append(list)
 
-    '''
+    
     def OnClicked(self, event):
         self.selected_row = event.GetIndex()
         self.rows[self.selected_row]
@@ -277,7 +277,7 @@ class PatentListCtrl(wx.ListCtrl):
             val.append(item.GetText())
         frame = self.GetTopLevelParent()
         frame.PushStatusText(" ".join(val))
-     '''
+    
 
 class MainFrame(wx.Frame):
     

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Config>
 	<Database>
-		<Path>C:\Users\iain.ferguson\source\repos\python\pms\pms\poditry.db</Path>
+		<Path>C:\Development\python\pms\pms\poditry.db</Path>
 		<UserName>iainf</UserName>
 		<PW>9c794af463368d152a8798c1cf654f67</PW>
 	</Database>

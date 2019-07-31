@@ -193,8 +193,8 @@ class AppointmentListCtrl(wx.ListCtrl):
     def populateList(self, data):
         self.DeleteAllItems()
         for row in data:
-            list = row[AppointmentPatentTable.IDX_TIME], row[AppointmentPatentTable.IDX_FIRST_NAME], row[AppointmentPatentTable.IDX_SURNAME], row[AppointmentPatentTable.IDX_HOME_PHONE]
-            self.Append(list)
+            item = row[AppointmentPatentTable.IDX_TIME], row[AppointmentPatentTable.IDX_FIRST_NAME], row[AppointmentPatentTable.IDX_SURNAME], row[AppointmentPatentTable.IDX_HOME_PHONE]
+            self.Append(item)
 
 
     
