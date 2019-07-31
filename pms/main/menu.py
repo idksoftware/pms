@@ -5,7 +5,6 @@ Created on Jul 9, 2013
 '''
 import wx
 
-
 ID_IMPORT = wx.ID_ANY
 ID_EXPORT = wx.ID_ANY
 
