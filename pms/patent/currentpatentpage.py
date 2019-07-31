@@ -344,17 +344,18 @@ class BackupListCtrl(wx.ListCtrl):
         self.SetColumnWidth(1, 50)
         self.SetColumnWidth(1, 100)
         self.SetColumnWidth(2, wx.LIST_AUTOSIZE_USEHEADER)
-        #self.Bind(wx.EVT_LIST_ITEM_SELECTED, self.OnItemSelected)
-        #self.Bind(wx.EVT_LIST_ITEM_ACTIVATED, self.OnClicked)
+        self.Bind(wx.EVT_LIST_ITEM_SELECTED, self.OnItemSelected)
+        self.Bind(wx.EVT_LIST_ITEM_ACTIVATED, self.OnClicked)
 
     def populateList(self, data):
+        self.rows = data
         self.DeleteAllItems()
         for row in data:
-            list = row[AppointmentPatentTable.IDX_TIME], row[AppointmentPatentTable.IDX_FIRST_NAME], row[AppointmentPatentTable.IDX_SURNAME], row[AppointmentPatentTable.IDX_HOME_PHONE]
-            self.Append(list)
+            item = row[AppointmentPatentTable.IDX_TIME], row[AppointmentPatentTable.IDX_FIRST_NAME], row[AppointmentPatentTable.IDX_SURNAME], row[AppointmentPatentTable.IDX_HOME_PHONE]
+            self.Append(item)
 
 
-    '''
+    
     def OnClicked(self, event):
         self.selected_row = event.GetIndex()
         self.rows[self.selected_row]
@@ -369,12 +370,12 @@ class BackupListCtrl(wx.ListCtrl):
             val.append(item.GetText())
         frame = self.GetTopLevelParent()
         frame.PushStatusText(" ".join(val))
-     '''
+     
 
 class MainFrame(wx.Frame):
     
     def __init__(self, parent, id=wx.ID_ANY, title="",pos=wx.DefaultPosition,
-                 size=wx.DefaultSize, style=wx.DEFAULT_FRAME_STYLE, name ="myFrame"):
+                 size=(1200,780), style=wx.DEFAULT_FRAME_STYLE, name ="myFrame"):
         super(MainFrame, self).__init__(parent, id, title, pos, size, style, name)
 
         self.panel = MainPane(self)
@@ -387,16 +388,26 @@ class MainPane(wx.Notebook):
         self.currentPatentCtrl = CurrentPatentCtrl(self)
         self.AddPage(self.currentPatentCtrl, "Current Patent")
 
+from access.database import Database
+from utils.configreader import ConfigReader
 
 class TestApp(wx.App):
     
     def OnInit(self):
+        if os.name == 'posix':
+            print os.environ['PWD']
+    
+        cfg = ConfigReader()
+        cfg.read("../main/config.xml")
+        Database.Open(cfg.GetPath(), cfg.GetUsername(), cfg.GetPassword())
         frame = MainFrame(None, title="The Main Frame")
         self.SetTopWindow(frame)
         frame.Show(True)
         return True
 
+
 if __name__=="__main__":
 
     app = TestApp(False)
+    
     app.MainLoop()

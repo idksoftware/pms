@@ -406,6 +406,7 @@ class AppointmentListCtrl(wx.ListCtrl):
         #self.Bind(wx.EVT_LIST_ITEM_ACTIVATED, self.OnClicked)
 
     def populateList(self, data):
+        self.rows = data
         for row in data:
             list = row[0], row[1]
             self.Append(list)

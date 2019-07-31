@@ -8,6 +8,7 @@ import wx
 from wx.adv import PyWizardPage
 from wx.adv import Wizard
 
+
 class MainPage(PyWizardPage):
 
     def __init__(self, parent):
@@ -16,7 +17,7 @@ class MainPage(PyWizardPage):
         self.next = self
         self.__DoLayout()
         self.SetInitialSize()
-        self.Bind(Wizard.EVT_WIZARD_PAGE_CHANGED, self.OnPageChanged)
+        #self.Bind(Wizard.EVT_WIZARD_PAGE_CHANGED, self.OnPageChanged)
 
     def SetPrev(self, prev):
         self.prev = prev

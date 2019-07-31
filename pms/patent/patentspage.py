@@ -257,10 +257,11 @@ class PatentListCtrl(wx.ListCtrl):
         self.Bind(wx.EVT_LIST_ITEM_ACTIVATED, self.OnClicked)
 
     def populateList(self, data):
+        self.rows = data
         self.DeleteAllItems()
         for row in data:
-            list = row[1], row[2], row[3], row[4]
-            self.Append(list)
+            item = row[1], row[2], row[3], row[4]
+            self.Append(item)
 
     
     def OnClicked(self, event):

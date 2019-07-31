@@ -17,7 +17,7 @@ class MedicalPage(PyWizardPage):
         self.next = self
         self.__DoLayout()
         self.SetInitialSize()
-        self.Bind(Wizard.EVT_WIZARD_PAGE_CHANGED, self.OnPageChanged)
+        #self.Bind(Wizard.EVT_WIZARD_PAGE_CHANGED, self.OnPageChanged)
 
     def SetPrev(self, prev):
         self.prev = prev
@@ -109,7 +109,7 @@ class MedicalPage(PyWizardPage):
 
         grp1Sizer.Add(otherLbl, (2, 3))
         grp1Sizer.Add(self.other, (2, 4))
-        grp1Sizer.Add(self.HeartTrouble, (3, 2))
+        #grp1Sizer.Add(self.HeartTrouble, (3, 2))
 
         mainSizer.Add(grp1Sizer, 0, wx.EXPAND | wx.ALL, 10)
         self.SetSizer(mainSizer)

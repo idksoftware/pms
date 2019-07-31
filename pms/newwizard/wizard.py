@@ -34,7 +34,7 @@ class NewWizard(Wizard):
     def __init__(self, parent):
         Wizard.__init__(self, parent, -1, "Mirror Wizard")
 
-        self.Bind(Wizard.EVT_WIZARD_FINISHED, self.OnWizardFinished)
+        #self.Bind(Wizard.EVT_WIZARD_FINISHED, self.OnWizardFinished)
         self.Ok = False
 
     def Create(self):

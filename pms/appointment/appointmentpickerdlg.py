@@ -7,7 +7,7 @@ import wx
 import wx.lib.scrolledpanel as scrolledpanel
 from access.gp import GPTable
 from appointmentbookctrl import AppointmentBookCtrl
-
+from wx.adv import DatePickerCtrl
 
 
 
@@ -63,7 +63,7 @@ class AppointmentPickerPanel(wx.Panel):
 
         text = ""
         makeModelLbl = wx.StaticText(self, -1, "Date:")
-        self.date = wx.DatePickerCtrl(self, size=(100, -1), style=wx.DP_DROPDOWN | wx.DP_SHOWCENTURY)
+        self.date = DatePickerCtrl(self, size=(100, -1), style=DatePickerCtrl.DP_DROPDOWN | DatePickerCtrl.DP_SHOWCENTURY)
 
         serialNoLbl = wx.StaticText(self, -1, "Time:")
 

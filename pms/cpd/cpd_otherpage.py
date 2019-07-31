@@ -21,7 +21,7 @@ class CPD_OtherPage(PyWizardPage):
         self.next = self
         self.__DoLayout()
         self.SetInitialSize()
-        self.Bind(Wizard.EVT_WIZARD_PAGE_CHANGED, self.OnPageChanged)
+        #self.Bind(Wizard.EVT_WIZARD_PAGE_CHANGED, self.OnPageChanged)
         self.gpInfo = gpInfo
         self.Done = False;
 
