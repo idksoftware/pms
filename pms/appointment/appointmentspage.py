@@ -113,12 +113,12 @@ class AppointmentsCtrl(scrolledpanel.ScrolledPanel):
 
 
         btnszr = wx.StdDialogButtonSizer()
-        editbtn = wx.Button(self, wx.ID_EDIT)
+        self.editbtn = wx.Button(self, wx.ID_EDIT)
         openbtn = wx.Button(self, wx.ID_OPEN)
         
         
-        editbtn.SetDefault()
-        sizer.Add(editbtn, (9, 3))
+        self.editbtn.SetDefault()
+        sizer.Add(self.editbtn, (9, 3))
         sizer.Add(openbtn, (9, 4))
        
         btnszr.Realize()
@@ -131,11 +131,13 @@ class AppointmentsCtrl(scrolledpanel.ScrolledPanel):
 
         self.SetSizer(mainSizer)
 
+        self.Bind(wx.EVT_BUTTON, self.OnClicked, self.editbtn)
         self.Bind(wx.EVT_LIST_ITEM_SELECTED, self.OnItemSelected)
         self.Bind(wx.EVT_LIST_ITEM_ACTIVATED, self.OnClicked)
 
     def OnClicked(self, event):
-        self.selected_row = event.GetIndex()
+        self.selected_row = self.appointmentBookCtrl.selected_row
+        #self.selected_row = event.GetIndex()
         row = self.rows[self.selected_row]
         
         print "Opening AppointmentDialog"

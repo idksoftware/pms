@@ -104,12 +104,12 @@ class AppointmentPanel(wx.Panel):
         sizer.Add(self.cost, (6, 2))
 
         btnszr = wx.StdDialogButtonSizer()
-        editbtn = wx.Button(self, wx.ID_EDIT)
+        self.editbtn = wx.Button(self, wx.ID_EDIT)
         #openbtn = wx.Button(self, wx.ID_OPEN)
 
 
-        editbtn.SetDefault()
-        btnszr.Add(editbtn)
+        self.editbtn.SetDefault()
+        btnszr.Add(self.editbtn)
         #btnszr.Add(openbtn)
 
         btnszr.Realize()
@@ -123,7 +123,7 @@ class AppointmentPanel(wx.Panel):
         mainSizer.Add(wx.StaticLine(self), 0, wx.EXPAND | wx.TOP | wx.BOTTOM, 5)
         self.SetSizer(mainSizer)
 
-        self.Bind(wx.EVT_BUTTON, self.OnEdit, editbtn)
+        self.Bind(wx.EVT_BUTTON, self.OnEdit, self.editbtn)
         #self.Bind(wx.EVT_LIST_ITEM_SELECTED, self.OnItemSelected)
         #self.Bind(wx.EVT_LIST_ITEM_ACTIVATED, self.OnClicked)
 
@@ -147,35 +147,55 @@ class AppointmentPanel(wx.Panel):
             from appointmenteditdlg import AppointmentEditDialog
             appointmentEditDialog = AppointmentEditDialog()
             print "Opening AppointmentEditDialog"
-            appointmentEditDialog.ShowModal()
+            result = appointmentEditDialog.ShowModal()
+            if result == wx.ID_OK:
+                print("Save")
+            else:
+                print("do'nt")
             print "Closing AppointmentEditDialog"
         elif page == 1:
             print "Patents page"
             from patent.patenteditdlg import PatentEditDialog
             patentEditDialog = PatentEditDialog()
             print "Opening PatentEditDialog"
-            patentEditDialog.ShowModal()
+            result = patentEditDialog.ShowModal()
+            if result == wx.ID_OK:
+                print("Save")
+            else:
+                print("do'nt")
             print "Closing PatentEditDialog"
         elif page == 2:
             print "Treatment page"
-            from patent.treatmenteditdlg import TreatmentEditDialog
+            from treatment.treatmenteditdlg import TreatmentEditDialog
             treatmentEditDialog = TreatmentEditDialog()
             print "Opening TreatmentEditDialog"
-            treatmentEditDialog.ShowModal()
+            result = treatmentEditDialog.ShowModal()
+            if result == wx.ID_OK:
+                print("Save")
+            else:
+                print("do'nt")
             print "Closing TreatmentEditDialog"
         elif page == 3:
             print "Payment page"
-            from patent.paymenteditdlg import PaymentEditDialog
+            from finance.paymenteditdlg import PaymentEditDialog
             paymentEditDialog = PaymentEditDialog()
             print "Opening PaymentEditDialog"
-            paymentEditDialog.ShowModal()
+            result = paymentEditDialog.ShowModal()
+            if result == wx.ID_OK:
+                print("Save")
+            else:
+                print("do'nt")
             print "Closing PaymentEditDialog"
         elif page == 4:
             print "History page"
             from appointmenthistoryeditdlg import AppointmentHistoryDialog
             appointmentHistoryDialog = AppointmentHistoryDialog(self.row)
             print "Opening AppointmentHistoryDialog"
-            appointmentHistoryDialog.ShowModal()
+            result = appointmentHistoryDialog.ShowModal()
+            if result == wx.ID_OK:
+                print("Save")
+            else:
+                print("do'nt")
             print "Closing AppointmentHistoryDialog"
         print "Edit button"
 
